@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gratitude Wall</title>
+  <link rel="stylesheet" href="styles_music.css">
+</head>
+<body class="music-body">
+  <div class="gratitude-container">
+    <h2>Gratitude Wall</h2>
+    <textarea id="gratitudeInput" placeholder="What are you thankful for today?"></textarea>
+    <button onclick="addGratitude()">Add</button>
+    <div id="gratitudeList"></div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      const saved = JSON.parse(localStorage.getItem('gratitudeMessages')) || [];
+      saved.forEach(msg => displayGratitude(msg.text, msg.favorite));
+    };
+  
+    function addGratitude() {
+      const input = document.getElementById('gratitudeInput');
+      const text = input.value.trim();
+      if (text !== '') {
+        displayGratitude(text, false);
+        saveToLocalStorage(text, false);
+        input.value = '';
+      }
+    }
+  
+    function displayGratitude(text, favorite) {
+      const message = document.createElement('div');
+      message.className = 'gratitude-message';
+      if (favorite) message.classList.add('favorite');
+  
+      const messageText = document.createElement('p');
+      messageText.textContent = text;
+  
+      const btnGroup = document.createElement('div');
+      btnGroup.className = 'button-group';
+  
+      const starBtn = document.createElement('button');
+      starBtn.className = 'icon-button';
+      starBtn.innerHTML = `
+  <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+    <path fill="currentColor" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+  </svg>
+`;
+      starBtn.title = 'Favorite';
+      starBtn.onclick = function () {
+        message.classList.toggle('favorite');
+        updateLocalStorage();
+      };
+  
+      const delBtn = document.createElement('button');
+      delBtn.className = 'icon-button';
+delBtn.innerHTML = `
+  <svg class="trash-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+    <path fill="currentColor" d="M3 6l3 18h12l3-18H3zm16.5-4h-13L6 2H2v2h20V2h-4l-.5-1z"/>
+  </svg>
+`;
+      delBtn.title = 'Delete';
+      delBtn.onclick = function () {
+        message.remove();
+        updateLocalStorage();
+      };
+  
+      btnGroup.appendChild(starBtn);
+      btnGroup.appendChild(delBtn);
+  
+      message.appendChild(messageText);
+      message.appendChild(btnGroup);
+  
+      document.getElementById('gratitudeList').prepend(message);
+    }
+  
+    function saveToLocalStorage(text, favorite) {
+      const saved = JSON.parse(localStorage.getItem('gratitudeMessages')) || [];
+      saved.push({ text, favorite });
+      localStorage.setItem('gratitudeMessages', JSON.stringify(saved));
+    }
+  
+    function updateLocalStorage() {
+      const allMessages = document.querySelectorAll('.gratitude-message');
+      const saved = [];
+      allMessages.forEach(msg => {
+        const text = msg.querySelector('p').textContent;
+        const favorite = msg.classList.contains('favorite');
+        saved.push({ text, favorite });
+      });
+      localStorage.setItem('gratitudeMessages', JSON.stringify(saved));
+    }
+  </script>
+  
+</body>
+</html>

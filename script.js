@@ -11,7 +11,10 @@ function navigateTo(page) {
     { src: 'images/pic3.jpg', caption: 'As the rain poured outside the coffee shop, we cozied up, lost in our own little world—laughing, goofing around, sharing One Piece episodes and delicious sips, turning an ordinary day into one of the most magical memories we\'ll always carry in our hearts.' },
     { src: 'images/pic4.jpg', caption: 'We welcomed the new year hand in hand—a fresh chapter filled with hope, love, healing, and growth, not just within ourselves, but in the beautiful bond we were building together, closer with every heartbeat.' },
     { src: 'images/pic5.jpg', caption: 'Tired but content, we rested in each other\’s arms, and in that quiet embrace, I knew—with every breath and every heartbeat—that your arms are the safest, most peaceful place in the world.' },
-    { src: 'images/pic6.jpg', caption: 'The day was long and weary, but simply being with you—detoxing in the calm of your presence—reminded me that even in life\’s chaos, your love makes it all beautifully worthwhile.' }
+    { src: 'images/pic6.jpg', caption: 'The day was long and weary, but simply being with you—detoxing in the calm of your presence—reminded me that even in life\’s chaos, your love makes it all beautifully worthwhile.' },
+    { src: 'images/pic7.jpg', caption: 'Gun to my head,I\'d never stop loving you'},
+    { src: 'images/pic8.jpg', caption: 'A gentle kiss on the cheek, rain tapping on the windows, a cold cup of coffee in hand, and laughter louder than the downpour—your sparkling eyes outshone the stars, and in that perfect moment, I knew you make life worth living.'},
+    { src: 'images/pic9.jpg', caption: 'Soft kisses and sweet cake filled the moment, but nothing compared to the warmth of your lips—undeniably sweeter, and infinitely more unforgettable.'}
   ];
   
   let index = 0;

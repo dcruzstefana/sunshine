@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  .music-body {
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    align-items: center;     /* centers vertically */
+    height: 100vh;           /* full viewport height */
+    background: url("images/background_image.png") no-repeat center center fixed;
+    background-size: cover;
+  } 
+  body {
+    background: url("images/background_image.png") no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  .player-container {
+    align-content: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .album-art {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #d21c59;
+    margin-bottom: 20px;
+  }
+  
+  .controls button {
+    font-size: 1.8em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 15px;
+    color: #d21c59;
+    transition: transform 0.2s ease;
+  }
+  
+  .controls button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Special styling for the play button */
+  #playBtn {
+    border: none;
+    border-radius: 50%;
+    padding: 10px 14px;
+    /*background-color: #d21c59;*/
+    color: #d21c59;;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+  }
+  #playBtn:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .time-info {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: #d21c59;
+  }
+  #progress {
+    width: 100%;
+    height: 6px;
+    border-radius: 10px;
+    outline: none;
+    background: linear-gradient(to right, #d21c59 0%, #ffd9e6 0%);
+    appearance: none;
+    transition: background 0.3s ease;
+    transition: background 0.4s linear;
+  }
+  
+  /* WebKit (Chrome, Safari) Thumb */
+  #progress::-webkit-slider-thumb {
+    appearance: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: #d21c59;
+    border: none;
+    cursor: pointer;
+    margin-top: -4px; /* aligns thumb vertically */
+  }
+  
+  /* Firefox Thumb */
+  #progress::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: #d21c59;
+    border: none;
+    cursor: pointer;
+  }
+  .gratitude-container {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    padding: 30px;
+    width: 400px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+  }
+  
+  .gratitude-container h2 {
+    color: #d21c59;
+    margin-bottom: 20px;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 2px solid #d21c59;
+    border-radius: 10px;
+    resize: none;
+    font-size: 1em;
+    margin-bottom: 15px;
+    background: #fff0f6;
+  }
+  
+  button {
+    background-color: #d21c59;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #b2184c;
+  }
+  
+  #gratitudeList {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .gratitude-message {
+    background-color: #fff1f8;
+    border: 3px dashed #d21c59;
+    border-radius: 15px;
+    padding: 10px 15px;
+    width: 160px;
+    position: relative;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .gratitude-message:hover {
+    transform: scale(1.05);
+  }
+  
+  .gratitude-message.favorite {
+    border-color: gold;
+    background-color: #fffbe6;
+  }
+  
+  .gratitude-message p {
+    margin: 0 0 10px;
+    word-wrap: break-word;
+    color: #d21c59;
+  font-weight: 500;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .button-group button {
+    font-size: 1.1em;
+    padding: 6px 10px;
+    background-color: #fff0f6;
+    color: #d21c59;
+    border: 2px solid #d21c59;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 1px 2px 5px rgba(210, 28, 89, 0.1);
+  }
+  
+  .button-group button:hover {
+    background-color: #ffe4ec;
+    transform: scale(1.1);
+  }
+  .icon-button {
+    background-color: #fff0f6;
+    border: 2px solid #d21c59;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    padding: 0;
+  }
+  
+  .icon-button:hover {
+    background-color: #ffe4ec;
+    transform: scale(1.1);
+  }
+  
+  .star-icon {
+    color: #d21c59;
+    transition: color 0.3s;
+  }
+  
+  .trash-icon {
+    color: #d21c59;
+    transition: color 0.3s;
+  }
+  
+  .gratitude-message.favorite .star-icon {
+    color: gold;
+  }
+   

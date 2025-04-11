@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="styles_music.css">
+</head>
+<body>
+    <body class="music-body">
+        <div class="player-container">
+          <img id="albumCover" src="images/cover1.jpg" alt="Album Cover" class="album-art" />
+          <h2 id="songTitle">Might Get Loud</h2>
+      
+          <div class="controls">
+            <button onclick="prevSong()">⏮</button>
+            <button onclick="togglePlay()" id="playBtn"><span id="playIcon">▶</span>
+            </button>
+            <button onclick="nextSong()">⏭</button>
+          </div>
+      
+          <audio id="audio" src=""></audio>
+          <div class="time-info">
+            <span id="currentTime">0:00</span>
+            <input type="range" id="progress" value="0" min="0" max="100" step="1">
+            <span id="duration">0:00</span>
+          </div>
+        </div>
+      
+        <script>
+          const songs = [
+            {
+              title: "Might Get Loud",
+              file: "music/mightgetloud.mp3",
+              cover: "images/cover1.jpg"
+            },
+            {
+              title: "Am I Dreaming?",
+              file: "music/dreaming.mp3",
+              cover: "images/cover1.jpg"
+            },
+            {
+              title: "Those Eyes",
+              file: "music/those_eyes.mp3",
+              cover: "images/cover1.jpg"
+            },
+            {
+              title: "Nice For What",
+              file: "music/nice_for_what.mp3",
+              cover: "images/cover1.jpg"
+            },
+            {
+                title: "Nice For What",
+              file: "music/blinding_lights.mp3",
+              cover: "images/cover1.jpg"  
+            }
+
+          ];
+      
+          let currentIndex = 0;
+          const audio = document.getElementById("audio");
+          const playBtn = document.getElementById("playBtn");
+          const albumCover = document.getElementById("albumCover");
+          const songTitle = document.getElementById("songTitle");
+          const progress = document.getElementById("progress");
+          const currentTime = document.getElementById("currentTime");
+          const duration = document.getElementById("duration");
+      
+          function loadSong(index) {
+            const song = songs[index];
+            audio.src = song.file;
+            albumCover.src = song.cover;
+            songTitle.textContent = song.title;
+          }
+      
+          function togglePlay() {
+            if (audio.paused) {
+              audio.play();
+              playBtn.textContent = "⏸";
+            } else {
+              audio.pause();
+              playBtn.textContent = "▶";
+            }
+          }
+      
+          function nextSong() {
+            currentIndex = (currentIndex + 1) % songs.length;
+            loadSong(currentIndex);
+            audio.play();
+            playBtn.textContent = "⏸";
+          }
+      
+          function prevSong() {
+            currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+            loadSong(currentIndex);
+            audio.play();
+            playBtn.textContent = "⏸";
+          }
+      
+          audio.addEventListener("timeupdate", () => {
+  updateProgress();
+  currentTime.textContent = formatTime(audio.currentTime);
+  duration.textContent = formatTime(audio.duration);
+});
+
+      
+          progress.addEventListener("input", () => {
+            audio.currentTime = (progress.value / 100) * audio.duration;
+          });
+      
+          function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60).toString().padStart(2, "0");
+            return `${minutes}:${seconds}`;
+          }
+      
+          // Load initial song
+          document.addEventListener("DOMContentLoaded", () => {
+            loadSong(currentIndex);
+          });
+          function updateProgress() {
+  const percent = (audio.currentTime / audio.duration) * 100;
+  progress.value = percent;
+
+  // Update gradient fill
+  progress.style.background = `linear-gradient(to right, #d21c59 0%, #d21c59 ${percent}%, #ffd9e6 ${percent}%, #ffd9e6 100%)`;
+}
+    </script>
+</body>
+</html>
