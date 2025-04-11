@@ -85,42 +85,46 @@
         }
 
         function togglePlay() {
-            if (audio.paused) {
-                audio.play();
-                // Change to Pause SVG
-                playBtn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
-                        <path d="M5.5 3.5h1v9h-1v-9zm4 0h1v9h-1v-9z"/>
-                    </svg>`;
-            } else {
-                audio.pause();
-                // Change to Play SVG
-                playBtn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
-                        <path d="M10.804 8.697L5.5 11.972V5.028l5.304 3.669z"/>
-                    </svg>`;
-            }
-        }
-
-        function nextSong() {
-            currentIndex = (currentIndex + 1) % songs.length;
-            loadSong(currentIndex);
-            audio.play();
-            playBtn.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
-                    <path d="M5.5 3.5h1v9h-1v-9zm4 0h1v9h-1v-9z"/>
-                </svg>`;
-        }
-        function prevSong() {
-            currentIndex = (currentIndex - 1 + songs.length) % songs.length;
-            loadSong(currentIndex);
-            audio.play();
-            playBtn.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
-                    <path d="M4.5 3.5v9l6-4.5-6-4.5zm7 0v9h1v-9h-1z"/>
-                </svg>
-            `; // Pause icon (⏸)
-        }
+  if (audio.paused) {
+    audio.play();
+    // Change play button to pause icon
+    playBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
+        <path d="M5.5 3h1v10h-1zM9.5 3h1v10h-1z"/>
+      </svg>
+    `;
+  } else {
+    audio.pause();
+    // Change pause button to play icon
+    playBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
+        <path d="M10.804 8.697L5.5 11.972V5.028l5.304 3.669z"/>
+      </svg>
+    `;
+  }
+}
+function nextSong() {
+  currentIndex = (currentIndex + 1) % songs.length;
+  loadSong(currentIndex);
+  audio.play();
+  // Change play button to pause icon
+  playBtn.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
+      <path d="M5.5 3h1v10h-1zM9.5 3h1v10h-1z"/>
+    </svg>
+  `;
+}
+function prevSong() {
+  currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+  loadSong(currentIndex);
+  audio.play();
+  // Change play button to pause icon
+  playBtn.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
+      <path d="M5.5 3h1v10h-1zM9.5 3h1v10h-1z"/>
+    </svg>
+  `;
+}
 
         audio.addEventListener("timeupdate", () => {
             updateProgress();
