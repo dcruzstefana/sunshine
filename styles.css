@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  
+  body {
+    background: url("images/background_image.png") no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  .overlay {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  .greeting {
+    margin-top: 60px;
+    color: #d21c59;
+    font-size: 1.8em;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    padding: 10px 20px;
+    animation: slideDown 1.5s ease-out;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .battery-button {
+    width: 150px; /* or 298px if you want full size */
+  height: 125px; /* maintain aspect ratio, or go full 250px */
+  background-color: rgba(255, 255, 255, 0.6);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  }
+  .battery-button:hover {
+    transform: scale(1.1);
+}
+  .battery-button p{
+    color: #d21c59;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  
+  .blow {
+    background-image: url("images/low_battery.png");
+    
+  }
+  
+  .bfull {
+    background-image: url("images/full_battery.png");
+   
+  }
+  .page-wrapper {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .affirmation-img {
+    width: 90%;
+    opacity: 0.8;
+    border-radius: 10px;
+    margin-top: 20px;
+    animation: slideInUp 0.8s ease-out forwards;
+  }
+  .back-button {
+    display: inline-block;
+    margin: 20px;
+    text-decoration: none;
+    color: #d21c59;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 14px;
+
+}
+.back-button:hover{
+  background-color: rgba(210, 28, 89, 0.1);
+}
+  
+  .custom-exclamation {
+    display: inline-block;
+    position: relative;
+    margin: 0 4px;
+  }
+
+  .custom-exclamation::after {
+    content: "❤";
+    position: absolute;
+    /*top: 0;*/
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1em;
+    bottom: 0.003em;
+    color: #d21c59;
+    line-height: 1;
+    animation: pulseHeart 1.2s infinite;
+  }
+
+  .header_low {
+    margin-top: 60px;
+    color: #d21c59;
+    font-size: 1.8em;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    padding: 10px 20px;
+    animation: slideDown 1.5s ease-out;
+  }
+  /* Arrows + Nav buttons */
+.btn-outline-secondary {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  color: #d21c59;
+  font-size: 24px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-outline-secondary:hover {
+  background-color: rgba(210, 28, 89, 0.1);
+  color: #d21c59;
+}
+
+/* Back button */
+.custom-back-btn {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: larger;
+  font-weight: bold;
+  color: #d21c59;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.custom-back-btn span {
+  color: #d21c59;
+}
+
+.custom-back-btn:hover {
+  background-color: rgba(210, 28, 89, 0.05);
+  text-decoration: none;
+}
+.mb-4
+{
+  background-color: (255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 10px 20px;
+}
+#memoryImg {
+  width: 300px;               
+  height: 400px;              
+  object-fit: cover;          
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+#memoryImg.fade-in{
+  animation: fadeIn 0.6s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+#caption
+{
+  color: #d21c59;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+
+  
+  font-family: 'Comic Sans MS', cursive, sans-serif; 
+}
+  @keyframes pulseHeart {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 0.8; /* match the final opacity */
+  }
+}
