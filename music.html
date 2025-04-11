@@ -13,10 +13,23 @@
           <h2 id="songTitle">Might Get Loud</h2>
       
           <div class="controls">
-            <button onclick="prevSong()">⏮</button>
-            <button onclick="togglePlay()" id="playBtn"><span id="playIcon">▶</span>
+            <button onclick="prevSong()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
+                    <path d="M11.5 3.5v9l-6-4.5 6-4.5zm-7 0v9h-1v-9h1z"/>
+                  </svg>                  
             </button>
-            <button onclick="nextSong()">⏭</button>
+            <button onclick="togglePlay()" id="playBtn"><span id="playIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
+                    <path d="M10.804 8.697L5.5 11.972V5.028l5.304 3.669z"/>
+                  </svg>  
+            </span>
+            </button>
+            <button onclick="nextSong()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#d21c59" viewBox="0 0 16 16">
+                    <path d="M4.5 3.5v9l6-4.5-6-4.5zm7 0v9h1v-9h-1z"/>
+                  </svg>
+                  
+            </button>
           </div>
       
           <audio id="audio" src=""></audio>
